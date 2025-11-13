@@ -1,0 +1,22 @@
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.env
+.DS_Store
+.ipynb_checkpoints/
+.env.*
+.idea/
+.vscode/
+dist/
+build/
+*.log
+*.sqlite3
+/*.pyc
+
+# Streamlit cache
+streamlit-cache/
+
+# OS files
+Thumbs.db

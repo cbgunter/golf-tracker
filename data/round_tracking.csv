@@ -1,0 +1,16 @@
+week,1
+date,11/12/25
+outside_temp,50
+course,Harbour Town
+nine_played,Front
+my_handicap,3
+opponent_name,Bill F
+opponent_handicap,1
+beers,3
+hole_par,"4,5,4,3,5,4,3,4,4"
+my_scores,"5,6,5,4,5,6,4,4,5"
+opponent_scores,"4,5,5,4,6,3,4,4,5"
+fairways,"n,n,n,na,n,n,na,y,n"
+greens,"n,n,y,n,y,n,n,y,n"
+putts,"2,2,3,2,2,3,2,2,2"
+match_result,loss

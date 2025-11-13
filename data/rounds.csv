@@ -1,0 +1,4 @@
+week,date,course,my_handicap,opponent_name,opponent_handicap,outside_temp,beers,hole_par,my_scores,opponent_scores,fairways,greens,putts,match_result
+1,11/12/25,Harbour Town,3,Bill F,1,50,3,"4,5,4,3,5,4,3,4,4","5,6,5,4,5,6,4,4,5","4,5,5,4,6,3,4,4,5","n,n,y,n,y,n,n,y,n","2,2,3,2,2,3,2,2,2","2,2,3,2,2,3,2,2,2",loss
+2,11/19/25,Bay Course,4,Alice K,2,48,2,"4,5,4,3,5,4,3,4,4","4,5,4,4,5,5,4,5,4","5,5,4,4,5,4,4,4,5","y,n,y,n,y,y,n,y,n","1,2,2,2,2,3,2,2,2","1,2,2,2,2,3,2,2,2",win
+3,11/26/25,Marina Links,5,Sam T,4,45,1,"4,5,4,3,5,4,3,4,4","6,5,5,4,6,5,4,4,6","5,6,5,5,6,5,4,5,5","n,y,y,n,y,n,n,y,n","2,3,3,2,3,2,2,2,3","2,3,3,2,3,2,2,2,3",loss
