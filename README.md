@@ -8,6 +8,7 @@ A data visualization application for tracking and analyzing league golf statisti
 - Visualize performance metrics with interactive charts
 - Analyze trends and patterns in your game
 - Compare rounds and courses
+ - Mobile-friendly responsive layout: charts resize and controls stack on small screens
 
 ## Installation
 
@@ -33,6 +34,11 @@ streamlit run app.py
 ```
 
 The application will open in your default web browser at `http://localhost:8501`
+
+## Mobile / Responsive
+
+- The UI has been adjusted to be mobile-friendly. Metrics render in a responsive grid, and charts use container width.
+- To test locally: open `http://localhost:8501` on a phone in the same network or use your browser's responsive/devtools mode.
 
 ## Project Structure
 

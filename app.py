@@ -10,6 +10,28 @@ st.set_page_config(page_title="Electric Phactory Winter Sim League", layout="wid
 st.title("⚡ Electric Phactory Winter Sim League")
 st.markdown("by Corey Gunter")
 
+# Mobile-friendly meta + CSS
+_RESPONSIVE_CSS = '''
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+    .resp-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; align-items:stretch; }
+    .metric-box { background: var(--background,#fff); border-radius:10px; padding:10px 12px; box-shadow: 0 0 0 1px rgba(0,0,0,0.03); }
+    .metric-title { font-size:12px; color: #6c757d; margin:0; }
+    .metric-value { font-size:20px; font-weight:600; margin-top:6px; }
+    @media (max-width: 780px) { .resp-metrics { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 420px) { .resp-metrics { grid-template-columns: 1fr; } .block-container { padding-left: 12px; padding-right:12px; } }
+</style>
+'''
+
+def _render_metrics_html(items, cols=3):
+        # items: list of (title, value)
+        html = _RESPONSIVE_CSS
+        html += '<div class="resp-metrics">'
+        for title, value in items:
+                html += f'<div class="metric-box"><div class="metric-title">{title}</div><div class="metric-value">{value}</div></div>'
+        html += '</div>'
+        return html
+
 # Load data from CSV
 DATA_FILE = Path(__file__).parent / "data" / "round_tracking.csv"
 
@@ -157,21 +179,16 @@ if page == "Dashboard":
         total_matches = wins + losses
         win_loss_ratio = f"{wins}-{losses}" if total_matches > 0 else "0-0"
 
-        # Top section: Key metrics
-        col1, col2, col3, col4, col5, col6 = st.columns(6)
-        
-        with col1:
-            st.metric("Rounds Played", rounds_played)
-        with col2:
-            st.metric("Average Score", f"{avg_score:.1f}" if avg_score is not None else "--")
-        with col3:
-            st.metric("Best Score", f"{best_score}" if best_score is not None else "--")
-        with col4:
-            st.metric("Average Beers", f"{avg_beers:.1f}" if avg_beers is not None else "--")
-        with col5:
-            st.metric("Total Beers", total_beers)
-        with col6:
-            st.metric("Win/Loss Ratio", win_loss_ratio)
+        # Top section: Key metrics (rendered responsively)
+        metrics_items = [
+            ("Rounds Played", rounds_played),
+            ("Average Score", f"{avg_score:.1f}" if avg_score is not None else "--"),
+            ("Best Score", f"{best_score}" if best_score is not None else "--"),
+            ("Average Beers", f"{avg_beers:.1f}" if avg_beers is not None else "--"),
+            ("Total Beers", total_beers),
+            ("Win/Loss Ratio", win_loss_ratio)
+        ]
+        st.markdown(_render_metrics_html(metrics_items), unsafe_allow_html=True)
 
         st.divider()
 
@@ -268,19 +285,19 @@ elif page == "Hole Analysis":
             greens = greens[:min_len]
             putts = putts[:min_len]
 
-            # Top section: Stats
-            col1, col2, col3 = st.columns(3)
-            with col1:
-                fairways_hit = sum(1 for f in fairways if f == 'y')
-                fairway_attempts = len([f for f in fairways if f != '-'])
-                st.metric("Fairways Hit", f"{fairways_hit}/{fairway_attempts}")
-            with col2:
-                greens_hit = sum(1 for g in greens if g == 'y')
-                greens_total = len(greens)
-                st.metric("Greens Hit", f"{greens_hit}/{greens_total}")
-            with col3:
-                total_putts = sum(putts) if putts else 0
-                st.metric("Total Putts", total_putts)
+            # Top section: Stats (responsive)
+            fairways_hit = sum(1 for f in fairways if f == 'y')
+            fairway_attempts = len([f for f in fairways if f != '-'])
+            greens_hit = sum(1 for g in greens if g == 'y')
+            greens_total = len(greens)
+            total_putts = sum(putts) if putts else 0
+
+            stat_items = [
+                ("Fairways Hit", f"{fairways_hit}/{fairway_attempts}"),
+                ("Greens Hit", f"{greens_hit}/{greens_total}"),
+                ("Total Putts", total_putts)
+            ]
+            st.markdown(_render_metrics_html(stat_items), unsafe_allow_html=True)
 
             st.divider()
 

@@ -7,6 +7,8 @@ def plot_score_trends(df):
     fig = px.line(df, x='date', y='score', 
                   title='Golf Score Trends',
                   labels={'date': 'Date', 'score': 'Score'})
+    # Make layout responsive-friendly for embedding in Streamlit
+    fig.update_layout(autosize=True, margin=dict(l=20, r=20, t=40, b=20))
     return fig
 
 def plot_course_averages(df):
@@ -15,6 +17,7 @@ def plot_course_averages(df):
     fig = px.bar(course_avg, x='course', y='score',
                  title='Average Score by Course',
                  labels={'course': 'Course', 'score': 'Average Score'})
+    fig.update_layout(autosize=True, margin=dict(l=20, r=20, t=40, b=20))
     return fig
 
 def plot_score_distribution(df):
@@ -23,4 +26,5 @@ def plot_score_distribution(df):
                        title='Score Distribution',
                        labels={'score': 'Score'},
                        nbins=20)
+    fig.update_layout(autosize=True, margin=dict(l=20, r=20, t=40, b=20))
     return fig
